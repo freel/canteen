@@ -19,8 +19,8 @@ class chequePrint():
             port='/dev/ttyUSB0',
             baudrate=9600
             )
-        self.reader.open()
-        self.reader.isOpen()
+        self.printer.open()
+        self.printer.isOpen()
 
     def parse_file(self):
         config = ConfigParser.ConfigParser()
