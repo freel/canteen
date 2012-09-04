@@ -1,0 +1,10 @@
+cashier,По умолчанию
+measure,166,кг,килограмм,1000
+measure,879,т/п,литр,123
+measure,000,г,грамм,124
+measure,796,шт,штука,125
+section,Первые блюда
+section,Вторые блюда
+section,Напитки
+section,Закуски
+supplier,По умолчанию

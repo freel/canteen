@@ -1,0 +1,92 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'productPanel.ui'
+#
+# Created: Fri Dec 16 16:21:05 2011
+#      by: pyside-uic 0.2.11 running on PySide 1.0.9
+#
+# WARNING! All changes made in this file will be lost!
+
+from PySide import QtCore, QtGui
+
+class Ui_productPanel(object):
+    def setupUi(self, productPanel):
+        productPanel.setObjectName("productPanel")
+        productPanel.resize(200, 50)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(productPanel.sizePolicy().hasHeightForWidth())
+        productPanel.setSizePolicy(sizePolicy)
+        productPanel.setMinimumSize(QtCore.QSize(200, 50))
+        self.productButton = QtGui.QPushButton(productPanel)
+        self.productButton.setGeometry(QtCore.QRect(0, 0, 131, 51))
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.productButton.sizePolicy().hasHeightForWidth())
+        self.productButton.setSizePolicy(sizePolicy)
+        self.productButton.setObjectName("productButton")
+        self.priceLabel = QtGui.QLabel(productPanel)
+        self.priceLabel.setGeometry(QtCore.QRect(130, 0, 67, 17))
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.priceLabel.sizePolicy().hasHeightForWidth())
+        self.priceLabel.setSizePolicy(sizePolicy)
+        palette = QtGui.QPalette()
+        brush = QtGui.QBrush(QtGui.QColor(255, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(159, 158, 158))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(159, 158, 158))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Text, brush)
+        self.priceLabel.setPalette(palette)
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.priceLabel.setFont(font)
+        self.priceLabel.setObjectName("priceLabel")
+        self.countLabel = QtGui.QLabel(productPanel)
+        self.countLabel.setGeometry(QtCore.QRect(130, 30, 67, 17))
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.countLabel.sizePolicy().hasHeightForWidth())
+        self.countLabel.setSizePolicy(sizePolicy)
+        palette = QtGui.QPalette()
+        brush = QtGui.QBrush(QtGui.QColor(0, 85, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 85, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(159, 158, 158))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.WindowText, brush)
+        self.countLabel.setPalette(palette)
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.countLabel.setFont(font)
+        self.countLabel.setObjectName("countLabel")
+
+        self.retranslateUi(productPanel)
+        QtCore.QMetaObject.connectSlotsByName(productPanel)
+
+    def retranslateUi(self, productPanel):
+        productPanel.setWindowTitle(QtGui.QApplication.translate("productPanel", "Form", None, QtGui.QApplication.UnicodeUTF8))
+        self.productButton.setText(QtGui.QApplication.translate("productPanel", "PushButton", None, QtGui.QApplication.UnicodeUTF8))
+        self.priceLabel.setText(QtGui.QApplication.translate("productPanel", "TextLabel", None, QtGui.QApplication.UnicodeUTF8))
+        self.countLabel.setText(QtGui.QApplication.translate("productPanel", "TextLabel", None, QtGui.QApplication.UnicodeUTF8))
+
