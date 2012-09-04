@@ -5,7 +5,6 @@ import ConfigParser
 
 class cardreader():
     def __init__(self):
-        self.shift = parent.shift
         self.parse_file()
         if self.type == "com":
             self.setCom()
