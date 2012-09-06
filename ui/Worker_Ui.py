@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'Worker_Ui.ui'
 #
-# Created: Wed Dec 28 16:20:17 2011
-#      by: pyside-uic 0.2.11 running on PySide 1.0.9
+# Created: Wed Sep  5 17:52:26 2012
+#      by: pyside-uic 0.2.13 running on PySide 1.1.0
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -48,7 +48,7 @@ class Ui_Worker(object):
         QtCore.QMetaObject.connectSlotsByName(Worker)
 
     def retranslateUi(self, Worker):
-        Worker.setWindowTitle(QtGui.QApplication.translate("Worker", "Dialog", None, QtGui.QApplication.UnicodeUTF8))
+        Worker.setWindowTitle(QtGui.QApplication.translate("Worker", "Новый работник", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("Worker", "ФИО работника", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("Worker", "Номер карты", None, QtGui.QApplication.UnicodeUTF8))
         self.label_3.setText(QtGui.QApplication.translate("Worker", "Табельный номер", None, QtGui.QApplication.UnicodeUTF8))

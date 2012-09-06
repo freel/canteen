@@ -73,9 +73,9 @@ class Income_Class(QtGui.QDialog):
         supplier = 1
         price = self.ui.priceEdit.text()
         coefficient = 1
-        for_sale = self.ui.checkBoxGoods.isChecked()
+        #~ for_sale = self.ui.checkBoxGoods.isChecked()
         shift = self.parent.parent.shift
-        param = (name,nomenclature,product,measure,count,mass,rest,supplier,price,coefficient,for_sale,shift.shift,)
+        param = (name,nomenclature,product,measure,count,mass,rest,supplier,price,coefficient,shift.shift,)
         return param
 
     def fillIncome(self):

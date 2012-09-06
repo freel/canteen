@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'Compare_Ui.ui'
 #
-# Created: Wed May 16 08:50:47 2012
+# Created: Wed Sep  5 17:40:05 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.0
 #
 # WARNING! All changes made in this file will be lost!
@@ -33,7 +33,7 @@ class Ui_Compare(object):
         QtCore.QMetaObject.connectSlotsByName(Compare)
 
     def retranslateUi(self, Compare):
-        Compare.setWindowTitle(QtGui.QApplication.translate("Compare", "Dialog", None, QtGui.QApplication.UnicodeUTF8))
+        Compare.setWindowTitle(QtGui.QApplication.translate("Compare", "Сопоставление", None, QtGui.QApplication.UnicodeUTF8))
         self.compareTableWidget.horizontalHeaderItem(0).setText(QtGui.QApplication.translate("Compare", "Наименование", None, QtGui.QApplication.UnicodeUTF8))
         self.compareTableWidget.horizontalHeaderItem(1).setText(QtGui.QApplication.translate("Compare", "Сопоставление", None, QtGui.QApplication.UnicodeUTF8))
         self.saveButton.setText(QtGui.QApplication.translate("Compare", "Сохранить[F12]", None, QtGui.QApplication.UnicodeUTF8))

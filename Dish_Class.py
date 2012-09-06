@@ -130,7 +130,6 @@ class Dish_Class(QtGui.QDialog):
         vals = []
         #try:
         for row in range(self.ui.consumptionTableWidget.rowCount()):
-            print self.ui.consumptionTableWidget.item(row, 2).text()
             vals.append({
                 "name":self.ui.consumptionTableWidget.cellWidget(row, 0).currentText(),
                 "netto":self.ui.consumptionTableWidget.item(row, 2).text(),

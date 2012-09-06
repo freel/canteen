@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'DishCount_Ui.ui'
 #
-# Created: Thu Apr 26 17:54:41 2012
+# Created: Wed Sep  5 17:43:35 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.0
 #
 # WARNING! All changes made in this file will be lost!
@@ -34,7 +34,7 @@ class Ui_DishCount(object):
         QtCore.QMetaObject.connectSlotsByName(DishCount)
 
     def retranslateUi(self, DishCount):
-        DishCount.setWindowTitle(QtGui.QApplication.translate("DishCount", "Form", None, QtGui.QApplication.UnicodeUTF8))
+        DishCount.setWindowTitle(QtGui.QApplication.translate("DishCount", "Количество", None, QtGui.QApplication.UnicodeUTF8))
         self.submitButton.setText(QtGui.QApplication.translate("DishCount", "Принять", None, QtGui.QApplication.UnicodeUTF8))
         self.submitButton.setShortcut(QtGui.QApplication.translate("DishCount", "Return", None, QtGui.QApplication.UnicodeUTF8))
         self.closeButton.setText(QtGui.QApplication.translate("DishCount", "Отмена", None, QtGui.QApplication.UnicodeUTF8))

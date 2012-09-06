@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'Product_Ui.ui'
 #
-# Created: Fri May 25 11:10:38 2012
+# Created: Wed Sep  5 17:47:48 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.0
 #
 # WARNING! All changes made in this file will be lost!
@@ -44,7 +44,7 @@ class Ui_Product(object):
         QtCore.QMetaObject.connectSlotsByName(Product)
 
     def retranslateUi(self, Product):
-        Product.setWindowTitle(QtGui.QApplication.translate("Product", "Dialog", None, QtGui.QApplication.UnicodeUTF8))
+        Product.setWindowTitle(QtGui.QApplication.translate("Product", "Новый продукт", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("Product", "Наименование продукта", None, QtGui.QApplication.UnicodeUTF8))
         self.saveButton.setText(QtGui.QApplication.translate("Product", "Сохранить[F12]", None, QtGui.QApplication.UnicodeUTF8))
         self.saveButton.setShortcut(QtGui.QApplication.translate("Product", "F12", None, QtGui.QApplication.UnicodeUTF8))

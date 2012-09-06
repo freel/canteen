@@ -1,42 +1,29 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ui version="4.0">
- <class>BaseChoice</class>
- <widget class="QDialog" name="BaseChoice">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>400</width>
-    <height>300</height>
-   </rect>
-  </property>
-  <property name="windowTitle">
-   <string>Dialog</string>
-  </property>
-  <widget class="QComboBox" name="comboBox">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>30</y>
-     <width>341</width>
-     <height>27</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QCommandLinkButton" name="commandLinkButton">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>90</y>
-     <width>185</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Продолжить</string>
-   </property>
-  </widget>
- </widget>
- <resources/>
- <connections/>
-</ui>
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'BaseChoice_Ui.ui'
+#
+# Created: Wed Sep  5 17:37:25 2012
+#      by: pyside-uic 0.2.13 running on PySide 1.1.0
+#
+# WARNING! All changes made in this file will be lost!
+
+from PySide import QtCore, QtGui
+
+class Ui_BaseChoice(object):
+    def setupUi(self, BaseChoice):
+        BaseChoice.setObjectName("BaseChoice")
+        BaseChoice.resize(400, 300)
+        self.comboBox = QtGui.QComboBox(BaseChoice)
+        self.comboBox.setGeometry(QtCore.QRect(30, 30, 341, 27))
+        self.comboBox.setObjectName("comboBox")
+        self.commandLinkButton = QtGui.QCommandLinkButton(BaseChoice)
+        self.commandLinkButton.setGeometry(QtCore.QRect(30, 90, 185, 41))
+        self.commandLinkButton.setObjectName("commandLinkButton")
+
+        self.retranslateUi(BaseChoice)
+        QtCore.QMetaObject.connectSlotsByName(BaseChoice)
+
+    def retranslateUi(self, BaseChoice):
+        BaseChoice.setWindowTitle(QtGui.QApplication.translate("BaseChoice", "Выбор базы", None, QtGui.QApplication.UnicodeUTF8))
+        self.commandLinkButton.setText(QtGui.QApplication.translate("BaseChoice", "Продолжить", None, QtGui.QApplication.UnicodeUTF8))
+

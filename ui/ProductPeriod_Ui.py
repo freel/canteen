@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ProductPeriod_Ui.ui'
 #
-# Created: Fri May 25 10:48:28 2012
+# Created: Wed Sep  5 17:46:51 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.0
 #
 # WARNING! All changes made in this file will be lost!
@@ -48,7 +48,7 @@ class Ui_ProductPeriod(object):
         QtCore.QMetaObject.connectSlotsByName(ProductPeriod)
 
     def retranslateUi(self, ProductPeriod):
-        ProductPeriod.setWindowTitle(QtGui.QApplication.translate("ProductPeriod", "Form", None, QtGui.QApplication.UnicodeUTF8))
+        ProductPeriod.setWindowTitle(QtGui.QApplication.translate("ProductPeriod", "Период", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("ProductPeriod", "С:", None, QtGui.QApplication.UnicodeUTF8))
         self.startDate.setDisplayFormat(QtGui.QApplication.translate("ProductPeriod", "dd-MM", None, QtGui.QApplication.UnicodeUTF8))
         self.label_3.setText(QtGui.QApplication.translate("ProductPeriod", "По:", None, QtGui.QApplication.UnicodeUTF8))

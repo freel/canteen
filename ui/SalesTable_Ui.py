@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'SalesTable_Ui.ui'
 #
-# Created: Tue Jan 10 10:41:33 2012
-#      by: pyside-uic 0.2.11 running on PySide 1.0.9
+# Created: Wed Sep  5 17:49:19 2012
+#      by: pyside-uic 0.2.13 running on PySide 1.1.0
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -68,7 +68,7 @@ class Ui_SalesTable(object):
         QtCore.QMetaObject.connectSlotsByName(SalesTable)
 
     def retranslateUi(self, SalesTable):
-        SalesTable.setWindowTitle(QtGui.QApplication.translate("SalesTable", "Form", None, QtGui.QApplication.UnicodeUTF8))
+        SalesTable.setWindowTitle(QtGui.QApplication.translate("SalesTable", "Продажа", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("SalesTable", "Номер карты", None, QtGui.QApplication.UnicodeUTF8))
         self.cardEdit.setInputMask(QtGui.QApplication.translate("SalesTable", "9999990000000000; ", None, QtGui.QApplication.UnicodeUTF8))
         self.workerNameEdit.setText(QtGui.QApplication.translate("SalesTable", "ФИО", None, QtGui.QApplication.UnicodeUTF8))

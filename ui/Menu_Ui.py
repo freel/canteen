@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'Menu_Ui.ui'
 #
-# Created: Thu Apr 26 17:56:06 2012
+# Created: Wed Sep  5 17:46:11 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.0
 #
 # WARNING! All changes made in this file will be lost!
@@ -87,7 +87,7 @@ class Ui_Menu(object):
         Menu.setTabOrder(self.addDishButton, self.pushButton_3)
 
     def retranslateUi(self, Menu):
-        Menu.setWindowTitle(QtGui.QApplication.translate("Menu", "Form", None, QtGui.QApplication.UnicodeUTF8))
+        Menu.setWindowTitle(QtGui.QApplication.translate("Menu", "Меню", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("Menu", "Поиск", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButton_3.setText(QtGui.QApplication.translate("Menu", "Найти", None, QtGui.QApplication.UnicodeUTF8))
         self.productBox.setTitle(QtGui.QApplication.translate("Menu", "Блюда", None, QtGui.QApplication.UnicodeUTF8))

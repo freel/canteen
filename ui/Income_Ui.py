@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'Income_Ui.ui'
 #
-# Created: Wed May 16 12:16:54 2012
+# Created: Wed Sep  5 17:44:18 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.0
 #
 # WARNING! All changes made in this file will be lost!
@@ -81,7 +81,7 @@ class Ui_Income(object):
         Income.setTabOrder(self.saveIncomButton, self.addProductButton)
 
     def retranslateUi(self, Income):
-        Income.setWindowTitle(QtGui.QApplication.translate("Income", "Dialog", None, QtGui.QApplication.UnicodeUTF8))
+        Income.setWindowTitle(QtGui.QApplication.translate("Income", "Приход", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("Income", "Наименование", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("Income", "Продукт", None, QtGui.QApplication.UnicodeUTF8))
         self.label_3.setText(QtGui.QApplication.translate("Income", "Ед. измерения", None, QtGui.QApplication.UnicodeUTF8))

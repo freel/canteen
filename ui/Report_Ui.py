@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'Report_Ui.ui'
 #
-# Created: Sun Apr 29 10:58:17 2012
+# Created: Wed Sep  5 17:48:28 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.0
 #
 # WARNING! All changes made in this file will be lost!
@@ -50,7 +50,7 @@ class Ui_Report(object):
         QtCore.QMetaObject.connectSlotsByName(Report)
 
     def retranslateUi(self, Report):
-        Report.setWindowTitle(QtGui.QApplication.translate("Report", "Dialog", None, QtGui.QApplication.UnicodeUTF8))
+        Report.setWindowTitle(QtGui.QApplication.translate("Report", "Отчет", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("Report", "С:", None, QtGui.QApplication.UnicodeUTF8))
         self.label_3.setText(QtGui.QApplication.translate("Report", "Тип отчета:", None, QtGui.QApplication.UnicodeUTF8))
         self.startDateEdit.setDisplayFormat(QtGui.QApplication.translate("Report", "dd-MM-yyyy", None, QtGui.QApplication.UnicodeUTF8))

@@ -86,7 +86,7 @@ class Menu_Class(QtGui.QWidget):
         self.menuWidget[did].amortizate()
         for product in self.menuWidget[did].amortization:
             for income in self.menuWidget[did].amortization[product]:
-                db.insert_val('calculate',(income, product, self.menuWidget[did].did, self.menuWidget[did].product[product],self.shift.shift))
+                db.insert_val('calculate',(income, product, self.menuWidget[did].did, self.menuWidget[did].product[product]))
                 row = db.select_val_by_id('income',income)['rows'][0]['rest']
                 amortization = row - self.menuWidget[did].consumption[product] * self.menuWidget[did].amortization[product][income]
                 db.update_val_by_id_name('income',income,'rest',amortization)
@@ -165,7 +165,10 @@ class Menu_Class(QtGui.QWidget):
 
     def delFromMenu(self):
         """Удаление строки из меню"""
-        self.ui.treeWidgetMenu.removeRow(self.ui.treeWidgetMenu.currentRow())
+        self.renew()
+        #~ item = self.ui.treeWidgetMenu.currentItem()
+        #~ item.remove(self.ui.treeWidgetMenu)
+        #~ self.ui.treeWidgetMenu.removeRow(self.ui.treeWidgetMenu.currentRow())
 
     def addToMenu(self):
         item = self.ui.treeWidgetDish.currentItem()

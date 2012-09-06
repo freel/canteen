@@ -30,7 +30,7 @@ class MainWindow_Class(QtGui.QMainWindow):
         self.sales.show()
 
 
-        self.connect(self.ui.openDirectoryButton, QtCore.SIGNAL("clicked()"),QtCore.SLOT("on_click_openDirectoryButton()"))
+        #self.connect(self.ui.openDirectoryButton, QtCore.SIGNAL("clicked()"),QtCore.SLOT("on_click_openDirectoryButton()"))
         self.connect(self.ui.openSalesButton, QtCore.SIGNAL("clicked()"),QtCore.SLOT("on_click_openSalesButton()"))
         self.connect(self.ui.openMenuButton, QtCore.SIGNAL("clicked()"),QtCore.SLOT("on_click_openMenuButton()"))
         self.connect(self.ui.openStorageButton, QtCore.SIGNAL("clicked()"),QtCore.SLOT("on_click_openStorageButton()"))
@@ -67,16 +67,16 @@ class MainWindow_Class(QtGui.QMainWindow):
         self.ui.tabWidget.setCurrentIndex(tab)
         self.formMenu.setFocus()
 
-    def on_click_openDirectoryButton(self):
-        """Открывает окно выбора Справочников"""
-        try:
-            tab = self.ui.tabWidget.indexOf(self.formDirectory)
-            #self.formDirectory.renew()
-        except:
-            self.formDirectory = DirectorySelect_Class(self)
-            tab = self.ui.tabWidget.addTab(self.formDirectory, u"Справочники")
-        self.ui.tabWidget.setCurrentIndex(tab)
-        self.formDirectory.setFocus()
+    #~ def on_click_openDirectoryButton(self):
+        #~ """Открывает окно выбора Справочников"""
+        #~ try:
+            #~ tab = self.ui.tabWidget.indexOf(self.formDirectory)
+            #~ #self.formDirectory.renew()
+        #~ except:
+            #~ self.formDirectory = DirectorySelect_Class(self)
+            #~ tab = self.ui.tabWidget.addTab(self.formDirectory, u"Справочники")
+        #~ self.ui.tabWidget.setCurrentIndex(tab)
+        #~ self.formDirectory.setFocus()
 
     def on_click_openStorageButton(self):
         """Открывает окно Склада"""

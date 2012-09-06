@@ -110,6 +110,7 @@ class Shift(QtGui.QWidget):
 
         dockWidget = QtGui.QDockWidget(self.parent)
         dockWidget.setWidget(self)
+        dockWidget.setFeatures(0x00)
         self.parent.addDockWidget(QtCore.Qt.RightDockWidgetArea, dockWidget)
 
     def on_click_shiftSetupButton(self):

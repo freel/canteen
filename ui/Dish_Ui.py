@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'Dish_Ui.ui'
 #
-# Created: Wed Jun  6 15:32:54 2012
+# Created: Wed Sep  5 17:42:27 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.0
 #
 # WARNING! All changes made in this file will be lost!
@@ -75,7 +75,7 @@ class Ui_Dish(object):
         Dish.setTabOrder(self.saveButton, self.consumptionTableWidget)
 
     def retranslateUi(self, Dish):
-        Dish.setWindowTitle(QtGui.QApplication.translate("Dish", "Dialog", None, QtGui.QApplication.UnicodeUTF8))
+        Dish.setWindowTitle(QtGui.QApplication.translate("Dish", "Калькуляция", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("Dish", "Наименование", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("Dish", "Раздел", None, QtGui.QApplication.UnicodeUTF8))
         self.consumptionTableWidget.horizontalHeaderItem(0).setText(QtGui.QApplication.translate("Dish", "Наименование продукта", None, QtGui.QApplication.UnicodeUTF8))

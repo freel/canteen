@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'Shift_Ui.ui'
 #
-# Created: Wed Dec 14 11:11:01 2011
-#      by: pyside-uic 0.2.11 running on PySide 1.0.9
+# Created: Wed Sep  5 17:50:57 2012
+#      by: pyside-uic 0.2.13 running on PySide 1.1.0
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -57,7 +57,7 @@ class Ui_Shift(object):
         QtCore.QMetaObject.connectSlotsByName(Shift)
 
     def retranslateUi(self, Shift):
-        Shift.setWindowTitle(QtGui.QApplication.translate("Shift", "Form", None, QtGui.QApplication.UnicodeUTF8))
+        Shift.setWindowTitle(QtGui.QApplication.translate("Shift", "Смена", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("Shift", "Дата", None, QtGui.QApplication.UnicodeUTF8))
         self.comboBoxTime.setItemText(0, QtGui.QApplication.translate("Shift", "Завтрак", None, QtGui.QApplication.UnicodeUTF8))
         self.comboBoxTime.setItemText(1, QtGui.QApplication.translate("Shift", "Обед", None, QtGui.QApplication.UnicodeUTF8))

@@ -9,10 +9,13 @@ class chequePrint():
         self.parse_file()
         if self.type == "com":
             self.setCom()
-        #~ elif self.type == "ltp":
-            #~ self.setLtp()
+        elif self.type == "test":
+            self.setTest()
 
         self.printHead()
+
+    def setTest(self):
+		self.printer = open("cheque.txt","w")
 
     def setCom(self):
         self.printer=serial.Serial(

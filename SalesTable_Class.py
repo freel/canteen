@@ -29,6 +29,7 @@ class SalesTable_Class(QtGui.QWidget):
         
         dockWidget = QtGui.QDockWidget(parent)
         dockWidget.setWidget(self)
+        dockWidget.setFeatures(0x00)
         parent.addDockWidget(QtCore.Qt.RightDockWidgetArea, dockWidget)
 
 ## DATA ##

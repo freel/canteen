@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'Sales_Ui.ui'
 #
-# Created: Tue Jan 10 09:47:52 2012
-#      by: pyside-uic 0.2.11 running on PySide 1.0.9
+# Created: Wed Sep  5 17:50:12 2012
+#      by: pyside-uic 0.2.13 running on PySide 1.1.0
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -70,7 +70,7 @@ class Ui_Sales(object):
         QtCore.QMetaObject.connectSlotsByName(Sales)
 
     def retranslateUi(self, Sales):
-        Sales.setWindowTitle(QtGui.QApplication.translate("Sales", "Form", None, QtGui.QApplication.UnicodeUTF8))
+        Sales.setWindowTitle(QtGui.QApplication.translate("Sales", "Питание", None, QtGui.QApplication.UnicodeUTF8))
         self.canteenBox.setTitle(QtGui.QApplication.translate("Sales", "Меню", None, QtGui.QApplication.UnicodeUTF8))
         self.treeWidgetMenu.headerItem().setText(0, QtGui.QApplication.translate("Sales", "Наименование", None, QtGui.QApplication.UnicodeUTF8))
         self.treeWidgetMenu.headerItem().setText(1, QtGui.QApplication.translate("Sales", "Количество", None, QtGui.QApplication.UnicodeUTF8))

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'MainWindow_Ui.ui'
 #
-# Created: Thu Apr 26 09:00:33 2012
+# Created: Wed Sep  5 17:36:08 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.0
 #
 # WARNING! All changes made in this file will be lost!
@@ -63,9 +63,6 @@ class Ui_MainWindow(object):
         self.openStorageButton = QtGui.QCommandLinkButton(self.dockWidgetContents_3)
         self.openStorageButton.setObjectName("openStorageButton")
         self.horizontalLayout_2.addWidget(self.openStorageButton)
-        self.openDirectoryButton = QtGui.QCommandLinkButton(self.dockWidgetContents_3)
-        self.openDirectoryButton.setObjectName("openDirectoryButton")
-        self.horizontalLayout_2.addWidget(self.openDirectoryButton)
         self.openReportButton = QtGui.QCommandLinkButton(self.dockWidgetContents_3)
         self.openReportButton.setObjectName("openReportButton")
         self.horizontalLayout_2.addWidget(self.openReportButton)
@@ -79,17 +76,15 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QtGui.QApplication.translate("MainWindow", "MainWindow", None, QtGui.QApplication.UnicodeUTF8))
+        MainWindow.setWindowTitle(QtGui.QApplication.translate("MainWindow", "Столовая", None, QtGui.QApplication.UnicodeUTF8))
         self.openSalesButton.setText(QtGui.QApplication.translate("MainWindow", "Продажи [F1]", None, QtGui.QApplication.UnicodeUTF8))
         self.openSalesButton.setShortcut(QtGui.QApplication.translate("MainWindow", "F1", None, QtGui.QApplication.UnicodeUTF8))
         self.openMenuButton.setText(QtGui.QApplication.translate("MainWindow", "Меню [F2]", None, QtGui.QApplication.UnicodeUTF8))
         self.openMenuButton.setShortcut(QtGui.QApplication.translate("MainWindow", "F2", None, QtGui.QApplication.UnicodeUTF8))
         self.openStorageButton.setText(QtGui.QApplication.translate("MainWindow", "Склад [F3]", None, QtGui.QApplication.UnicodeUTF8))
         self.openStorageButton.setShortcut(QtGui.QApplication.translate("MainWindow", "F3", None, QtGui.QApplication.UnicodeUTF8))
-        self.openDirectoryButton.setText(QtGui.QApplication.translate("MainWindow", "Справочники [F4]", None, QtGui.QApplication.UnicodeUTF8))
-        self.openDirectoryButton.setShortcut(QtGui.QApplication.translate("MainWindow", "F4", None, QtGui.QApplication.UnicodeUTF8))
-        self.openReportButton.setText(QtGui.QApplication.translate("MainWindow", "Отчеты [F5]", None, QtGui.QApplication.UnicodeUTF8))
-        self.openReportButton.setShortcut(QtGui.QApplication.translate("MainWindow", "F5", None, QtGui.QApplication.UnicodeUTF8))
-        self.openUnloadButton.setText(QtGui.QApplication.translate("MainWindow", "Выгрузка [F6]", None, QtGui.QApplication.UnicodeUTF8))
-        self.openUnloadButton.setShortcut(QtGui.QApplication.translate("MainWindow", "F6", None, QtGui.QApplication.UnicodeUTF8))
+        self.openReportButton.setText(QtGui.QApplication.translate("MainWindow", "Отчеты [F4]", None, QtGui.QApplication.UnicodeUTF8))
+        self.openReportButton.setShortcut(QtGui.QApplication.translate("MainWindow", "F4", None, QtGui.QApplication.UnicodeUTF8))
+        self.openUnloadButton.setText(QtGui.QApplication.translate("MainWindow", "Выгрузка [F5]", None, QtGui.QApplication.UnicodeUTF8))
+        self.openUnloadButton.setShortcut(QtGui.QApplication.translate("MainWindow", "F5", None, QtGui.QApplication.UnicodeUTF8))
 

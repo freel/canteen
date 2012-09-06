@@ -8,6 +8,11 @@ class cardreader():
         self.parse_file()
         if self.type == "com":
             self.setCom()
+        if self.type == "test":
+            self.setTest()
+
+    def setTest(self):
+		self.reader = open("cheque.txt","w")
 
     def setCom(self):
         self.reader=serial.Serial(
