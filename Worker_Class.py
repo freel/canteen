@@ -25,7 +25,7 @@ class Worker_Class(QtGui.QDialog):
         card = '{:0>16}'.format(self.ui.cardEdit.text())
         employee = '{:0>16}'.format(self.ui.employeeEdit.text())
         db = localDb_Class()
-        company = db.select_val_by_col("company", "name", "\"%s\"" % self.ui.comboBox.currentText())["rows"][0][0]
+        company = db.select_val_by_col("company", "name", "\'%s\'" % self.ui.comboBox.currentText())["rows"][0][0]
         db.close_db()
         param = (company, card, name, employee)
         return param

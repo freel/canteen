@@ -95,7 +95,6 @@ class localDb_Class():
         query += table
         query += " WHERE "
         query += colname + "=" + colval
-        #print query
         return self.exec_query(query)
 
     def update_val_by_id_name(self,table,rowId,name,val):

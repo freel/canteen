@@ -50,8 +50,7 @@ class SalesTable_Class(QtGui.QWidget):
                 self.parent.formSales.setEnabled(True)
             else:
                 self.addWorker()
-            print 
-            self.worker = worker['rows'][0]
+            #~ self.worker = worker['rows'][0]
         else:
             self.say_shortCard()
 
@@ -176,7 +175,6 @@ class SalesTable_Class(QtGui.QWidget):
         self.filter = cardEvent(self)
         self.ui.cardEdit.installEventFilter(self.filter)
         self.ui.cardEdit.setFocus()
-        self.card = cardreader()
         
         self.timer.start(1000)
             
