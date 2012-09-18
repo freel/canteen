@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'Worker_Ui.ui'
 #
-# Created: Wed Sep  5 17:52:26 2012
+# Created: Tue Sep 18 16:03:30 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.0
 #
 # WARNING! All changes made in this file will be lost!
@@ -55,5 +55,6 @@ class Ui_Worker(object):
         self.label_4.setText(QtGui.QApplication.translate("Worker", "Компания", None, QtGui.QApplication.UnicodeUTF8))
         self.cardEdit.setInputMask(QtGui.QApplication.translate("Worker", "999999; ", None, QtGui.QApplication.UnicodeUTF8))
         self.employeeEdit.setInputMask(QtGui.QApplication.translate("Worker", "999999; ", None, QtGui.QApplication.UnicodeUTF8))
-        self.saveButton.setText(QtGui.QApplication.translate("Worker", "Сохранить[S]", None, QtGui.QApplication.UnicodeUTF8))
+        self.saveButton.setText(QtGui.QApplication.translate("Worker", "Сохранить[F12]", None, QtGui.QApplication.UnicodeUTF8))
+        self.saveButton.setShortcut(QtGui.QApplication.translate("Worker", "F12", None, QtGui.QApplication.UnicodeUTF8))
 
