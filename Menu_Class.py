@@ -248,4 +248,6 @@ class Menu_Class(QtGui.QWidget):
             widget.setText(1, u"%s" % widget.portions)
             self.productWidget[item.did] = widget
             self.ui.treeWidgetDish.addTopLevelItem(self.productWidget[item.did])
+        self.ui.treeWidgetMenu.takeTopLevelItem(self.ui.treeWidgetMenu.indexOfTopLevelItem(item))
+        del self.menuWidget[item.did]
         self.renewPortions()
