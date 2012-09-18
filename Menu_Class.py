@@ -6,9 +6,10 @@ from ui.Menu_Ui import Ui_Menu
 from localDb_Class import localDb_Class
 from Shift_Class import Shift
 from Dish_Class import Dish_Class
-from productParent_Class import productDishPanel_Class
+from productParent_Class import productDishPanel_Class, productMenuPanel_Class
 #from productPanel_Class import productPanel_Class
 from ui.groupPanel import Ui_groupPanel
+from ui.DishCount_Ui import Ui_DishCount
 
 class Menu_Class(QtGui.QWidget):
     def __init__(self, parent=None):
@@ -18,9 +19,9 @@ class Menu_Class(QtGui.QWidget):
         self.setupUi()
 
     def renew(self):
+        """обновление данных"""
         self.clear()
         self.setupData()
-
         self.insertValsIntoWidget()
 
     def renewPortions(self):
@@ -151,7 +152,7 @@ class Menu_Class(QtGui.QWidget):
         #widget = productDishPanel_Class(self, (row['id'], row['name']))
 
         #try:
-        print (row['id'], row['name'])
+        #~ print (row['id'], row['name'])
         widget = productDishPanel_Class(self, (row['id'], row['name']))
         self.productWidget[row['id']] = widget
         self.groupWidget[int(row['section'])].insertChild(0,self.productWidget[row['id']])
@@ -163,29 +164,88 @@ class Menu_Class(QtGui.QWidget):
         form = Dish_Class(self)
         form.show()
 
-    def delFromMenu(self):
-        """Удаление строки из меню"""
-        self.renew()
+    #~ def delFromMenu(self):
+        #~ """Удаление строки из меню"""
+        #~ self.renew()
         #~ item = self.ui.treeWidgetMenu.currentItem()
-        #~ item.remove(self.ui.treeWidgetMenu)
+        #~ item.delFromMenu()
         #~ self.ui.treeWidgetMenu.removeRow(self.ui.treeWidgetMenu.currentRow())
 
     def addToMenu(self):
         item = self.ui.treeWidgetDish.currentItem()
-        item.onClick()
+        self.onClick(item)
+        
 
     def onClick(self, item, column = None ):
         """item это объект productDishPanel_Class """
-        item.onClick()
+        self.openCount(item)
 
+## WidgetCount ##
+
+    def openCount(self,item):
+        """Открывается окно с количеством добавляемых блюд
+        По нажаию на ОК выполняется onSubmitCount()"""
+        self.widgetCount = QtGui.QWidget(self.parent, QtCore.Qt.Window)
+        self.widgetCount.setWindowModality(QtCore.Qt.ApplicationModal)
+        self.widgetCount.ui = Ui_DishCount()
+        self.widgetCount.ui.setupUi(self.widgetCount)
+        self.widgetCount.item = item
+        self.widgetCount.ui.spinBox.setMinimum(0)
+        self.widgetCount.ui.spinBox.setMaximum(self.widgetCount.item.portions)
+        
+        ## Далее перенаправляет обработку к родителю, т.е. в Menu_Class(). Ну совсем глупо бядабяда.
+        self.connect(self.widgetCount.ui.submitButton, QtCore.SIGNAL("clicked()"), QtCore.SLOT("onSubmitCount()"))
+        self.connect(self.widgetCount.ui.closeButton, QtCore.SIGNAL("clicked()"), QtCore.SLOT("onCloseCount()"))
+        self.widgetCount.show()
 
     def onSubmitCount(self):
-        widget = self.ui.treeWidgetDish.currentItem()
-        widget.widgetCount.close()
-        widget.widgetCount.value = widget.widgetCount.ui.spinBox.value()
-        widget.recount(widget.widgetCount.value)
+        """Вызывается при принятии окна с количеством
+        Добаввляет в меню блюдо в указанном количестве"""
+        self.widgetCount.close()
+        self.widgetCount.value = self.widgetCount.ui.spinBox.value()
+        item = self.widgetCount.item
+        portions = self.widgetCount.value
+        item.removePortions(portions)
+        for product in item.consumption:
+            self.products[product] -= item.consumption[product]*portions
+        if item.did in self.menuWidget:
+            item.changeCount()
+            self.menuWidget[item.did].portions += portions
+            self.menuWidget[item.did].setText(1, u"%s" % self.menuWidget[item.did].portions)
+        else:
+            widget = productMenuPanel_Class(self,(item.did, item.name, portions))
+            #widget.portions = portions
+            widget.max_amortization = item.max_amortization
+            #widget.price = widget.getDishPrice()
+            item.setText(1, u"%s" % item.portions)
+            widget.setText(1, u"%s" % widget.portions)
+            self.menuWidget[item.did] = widget
+            self.ui.treeWidgetMenu.addTopLevelItem(self.menuWidget[item.did])
+        self.renewPortions()
 
     def onCloseCount(self):
-        widget = self.ui.treeWidgetDish.currentItem()
-        widget.widgetCount.close()
-        widget.widgetCount.value = None
+        """Вызывается при закрытии окна с количеством"""
+        self.widgetCount.close()
+        self.widgetCount.value = None
+
+    def delFromMenu(self):
+        """Удаляет из меню"""
+        item = self.ui.treeWidgetMenu.currentItem()
+        portions = item.portions
+        item.removePortions(portions)
+        for product in item.consumption:
+            self.products[product] += item.consumption[product]*portions
+        if item.did in self.productWidget:
+            item.changeCount()
+            self.productWidget[item.did].portions += portions
+            self.productWidget[item.did].setText(1, u"%s" % self.productWidget[item.did].portions)
+        else:
+            widget = productDishPanel_Class(self,(item.did, item.name, portions))
+            #widget.portions = portions
+            widget.max_amortization = item.max_amortization
+            #widget.price = widget.getDishPrice()
+            item.setText(1, u"%s" % item.portions)
+            widget.setText(1, u"%s" % widget.portions)
+            self.productWidget[item.did] = widget
+            self.ui.treeWidgetDish.addTopLevelItem(self.productWidget[item.did])
+        self.renewPortions()
