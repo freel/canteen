@@ -47,7 +47,7 @@ class Menu_Class(QtGui.QWidget):
         return rows
 
     def insertValsIntoWidget(self):
-        """Создает дерево продуктов по разделам"""
+        """Создает дерево блюд по разделам"""
         self.groupWidget = {}
         self.productWidget = {}
         self.menuWidget = {}
@@ -71,33 +71,37 @@ class Menu_Class(QtGui.QWidget):
 
     def saveMenu(self):
         """Сохраняет меню"""
-        for did in self.menuWidget:
-            self.save_calculate(did)
-        self.renew()
-
-    def save_calculate(self, did):
-        """Проводит запись блюда и калькуляции"""
-        self.save_calc(did)
-        self.save_menu_item(did)
-
-    def save_calc(self, did):
-        """Сохраняет калькуляцию"""
         db = localDb_Class()
-        self.menuWidget[did].amortizate()
+        #try:
+        for did in self.menuWidget:
+            self.save_calculate(did,db)
+        self.renew()
+        #except:
+            #None
+        db.close_db()
+
+    def save_calculate(self, did, db):
+        """Проводит запись блюда и калькуляции"""
+        self.save_calc(did,db)
+        self.save_menu_item(did,db)
+
+    def save_calc(self, did, db):
+        """Сохраняет калькуляцию"""
+        try:
+            self.menuWidget[did].amortizate()
+        except:
+            print "edtertwert"
         for product in self.menuWidget[did].amortization:
             for income in self.menuWidget[did].amortization[product]:
                 db.insert_val('calculate',(income, product, self.menuWidget[did].did, self.menuWidget[did].price))
                 row = db.select_val_by_id('income',income)['rows'][0]['rest']
                 amortization = row - self.menuWidget[did].consumption[product] * self.menuWidget[did].amortization[product][income]
                 db.update_val_by_id_name('income',income,'rest',amortization)
-        db.close_db()
 
-    def save_menu_item(self,did):
+
+    def save_menu_item(self, did, db):
         """Сохраняет строку из меню"""
-        db = localDb_Class()
         db.insert_val('menu',(did, self.shift.shift, self.menuWidget[did].portions, self.menuWidget[did].portions, self.menuWidget[did].price))
-        db.close_db()
-
 
     def select_menu(self,shift):
         """Выбор строк меню"""
@@ -149,9 +153,7 @@ class Menu_Class(QtGui.QWidget):
     def setRow(self,row):
         """Заполнение списка блюд"""
         #widget = productDishPanel_Class(self, (row['id'], row['name']))
-
         try:
-            print (row['id'], row['name'])
             widget = productDishPanel_Class(self, (row['id'], row['name']))
             self.productWidget[row['id']] = widget
             self.groupWidget[int(row['section'])].insertChild(0,self.productWidget[row['id']])

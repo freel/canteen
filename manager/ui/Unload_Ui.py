@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'Unload_Ui.ui'
 #
-# Created: Sun Apr 29 10:59:53 2012
+# Created: Mon May 28 15:44:17 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.0
 #
 # WARNING! All changes made in this file will be lost!
@@ -44,7 +44,7 @@ class Ui_Unload(object):
         Unload.setWindowTitle(QtGui.QApplication.translate("Unload", "Dialog", None, QtGui.QApplication.UnicodeUTF8))
         self.startDateEdit.setDisplayFormat(QtGui.QApplication.translate("Unload", "dd-MM-yyyy", None, QtGui.QApplication.UnicodeUTF8))
         self.finishDateEdit.setDisplayFormat(QtGui.QApplication.translate("Unload", "dd-MM-yyyy", None, QtGui.QApplication.UnicodeUTF8))
-        self.formButton.setText(QtGui.QApplication.translate("Unload", "Сформировать", None, QtGui.QApplication.UnicodeUTF8))
+        self.formButton.setText(QtGui.QApplication.translate("Unload", "Выгрузить в 1С", None, QtGui.QApplication.UnicodeUTF8))
         self.saveButton.setText(QtGui.QApplication.translate("Unload", "Сохранить[F12]", None, QtGui.QApplication.UnicodeUTF8))
         self.saveButton.setShortcut(QtGui.QApplication.translate("Unload", "F12", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("Unload", "С:", None, QtGui.QApplication.UnicodeUTF8))

@@ -14,7 +14,7 @@ class Income_Class(QtGui.QDialog):
         self.ui = Ui_Income()
         self.ui.setupUi(self)
         self.parent = parent
-        #DAS MODEL#
+
         self.listProduct = QtGui.QStandardItemModel(0,2)
         self.ui.productEdit.setModel(self.listProduct)
         self.ui.productEdit.setModelColumn(1)
@@ -58,10 +58,7 @@ class Income_Class(QtGui.QDialog):
             supplier поставщик(на всякий случай)
             price цена за единицу товара
             coefficient ???
-            for_sale флаг отоварки TRUE отоварка, False не отоварка
             shift смена в которую был зарегистрирован приход
-
-            TODO как продать 1024г картошки например??? И надо ли?
         """
         name = self.ui.nameEdit.text()
         nomenclature = int(self.ui.nomenclatureEdit.text())
@@ -71,11 +68,12 @@ class Income_Class(QtGui.QDialog):
         mass = self.ui.massEdit.text()
         rest = float(mass)*int(count)
         supplier = 1
-        price = self.ui.priceEdit.text()
+        price = self.ui.priceEdit.text().replace(',','.')
+        print price
         coefficient = 1
-        for_sale = self.ui.checkBoxGoods.isChecked()
+        #for_sale = self.ui.checkBoxGoods.isChecked()
         shift = self.parent.parent.shift
-        param = (name,nomenclature,product,measure,count,mass,rest,supplier,price,coefficient,for_sale,shift.shift,)
+        param = (shift.base,name,nomenclature,product,measure,count,mass,rest,supplier,price,coefficient,1)
         return param
 
     def fillIncome(self):

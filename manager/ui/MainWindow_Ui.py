@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'MainWindow_Ui.ui'
 #
-# Created: Thu Apr 26 09:00:33 2012
+# Created: Thu Jun  7 07:26:09 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.0
 #
 # WARNING! All changes made in this file will be lost!
@@ -55,6 +55,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.openSalesButton = QtGui.QCommandLinkButton(self.dockWidgetContents_3)
+        self.openSalesButton.setEnabled(False)
         self.openSalesButton.setObjectName("openSalesButton")
         self.horizontalLayout_2.addWidget(self.openSalesButton)
         self.openMenuButton = QtGui.QCommandLinkButton(self.dockWidgetContents_3)

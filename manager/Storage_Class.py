@@ -36,7 +36,6 @@ class Storage_Class(QtGui.QDialog):
 
     def on_click_delIncomeButton(self):
         """Удаляет выделенную запись
-
         СДЕЛАТЬ ПРОВЕРКУ НА ССЫЛКИ ИЗ БАЗЫ
         """
         rownum = self.ui.tableStorageWidget.currentRow()
@@ -58,7 +57,6 @@ class Storage_Class(QtGui.QDialog):
         db = localDb_Class()
         answer = db.select_val_by_col('calculate','income',"%s" % id_to_del)
         db.close_db()
-        print answer['rows']
         try:
             return answer['rows'][0]
         except:
@@ -68,7 +66,6 @@ class Storage_Class(QtGui.QDialog):
         """Заполняет склад из базы
         TODO сделать по человечьи(вместо циферок значения из справочников поставить)"""
         for row in self.select_incomes():
-            print row
             itemNumber = self.ui.tableStorageWidget.rowCount()
             self.ui.tableStorageWidget.setRowCount(itemNumber +1)
             for col in range(len(row)):
@@ -79,9 +76,8 @@ class Storage_Class(QtGui.QDialog):
     def select_incomes(self):
         """Выбирает все необходимые значения из базы"""
         db = localDb_Class()
-        query = "SELECT i.id, i.name, m.name, i.count, i.rest, i.price, p.for_sale, i.date FROM income as i, measure as m, product as p WHERE "
+        query = "SELECT i.nomenculature, i.name, m.name, i.count, i.rest, i.price, p.for_sale, i.date FROM income as i, measure as m, product as p WHERE "
         query += "i.active<>0 AND m.code = i.measure AND p.id = i.product"
         incom = db.exec_query(query)['rows']
         db.close_db()
-        print incom
         return incom

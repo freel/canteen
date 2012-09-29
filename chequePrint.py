@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import sys, os, time, serial, select
+import sys, os, time, serial, select, parallel
 import ConfigParser
 
 class chequePrint():
@@ -9,6 +9,8 @@ class chequePrint():
         self.parse_file()
         if self.type == "com":
             self.setCom()
+        elif self.type == "lpt":
+            self.setLpt()
         elif self.type == "test":
             self.setTest()
 
@@ -24,6 +26,10 @@ class chequePrint():
             )
         self.printer.open()
         self.printer.isOpen()
+
+    def setLpt(self):
+        None
+        #~ self.printer = 
 
     def parse_file(self):
         config = ConfigParser.ConfigParser()

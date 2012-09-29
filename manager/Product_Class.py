@@ -20,14 +20,21 @@ class Product_Class(QtGui.QDialog):
 
     def saveProduct(self):
         data = self.ui.nameEdit.text()
+        if self.ui.checkBoxGoods.checkState():
+            sale = 1
+        else:
+            sale = 0
         db = localDb_Class()
         try:
-            db.insert_val('product',(data,))
+            db.insert_val('product',(data, sale))
         except:
             None
-        pid = db.select_val_by_col('product', 'name', "'%s'" % data)['rows'][0]['id']
-        for period in self.periods:
-            period.saveData(db, pid)
+        try:
+            pid = db.select_val_by_col('product', 'name', "'%s'" % data)['rows'][0]['id']
+            for period in self.periods:
+                period.saveData(db, pid)
+        except:
+            None
         db.close_db()
         self.close()
         self.parent.renew()

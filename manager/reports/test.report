@@ -1,0 +1,6 @@
+[data]
+head: <body>Шапка<br>
+	с {start} по {finish}<p>
+body: nbgf {name}, {mass}<br>
+floor: </body>
+query: SELECT name, mass FROM dish

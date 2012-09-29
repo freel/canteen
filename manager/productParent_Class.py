@@ -26,12 +26,11 @@ class productParent_Class(QtGui.QTreeWidgetItem):
         did, name - передали с родителя,
         consumption - состав,
         amortization -
-        max_amortization -
         """
         self.did = self.row[0]
         self.name = self.row[1]
-        self.max_amortization = {}
         self.amortization = {}
+        self.product = {}
         self.consumption = self.select_consumption()
 
         try:
@@ -50,21 +49,26 @@ class productParent_Class(QtGui.QTreeWidgetItem):
     def getDishPrice(self):
         """Считает цену продукта"""
         summ = 0
-        num = 0
+        #num = 0
+        #for row in self.consumption:
+        #    rest = self.portions
+        #    product_prices = self.getProductPrice(row)['rows']
+        #    self.max_amortization[row] = {}
+        #    for income_price in product_prices:
+        #        if rest-income_price['count']<=0:
+        #            summ += rest*income_price['price']
+        #            self.max_amortization[row][income_price['id']] = rest
+        #            rest=0
+        #        else:
+        #            summ += income_price['count']*income_price['price']
+        #            self.max_amortization[row][income_price['id']] = income_price['count']
+        #            rest -= income_price['count']
+        #price = round(summ / self.portions, 2)
         for row in self.consumption:
-            rest = self.portions
-            product_prices = self.getProductPrice(row)['rows']
-            self.max_amortization[row] = {}
-            for income_price in product_prices:
-                if rest-income_price['count']<=0:
-                    summ += rest*income_price['price']
-                    self.max_amortization[row][income_price['id']] = rest
-                    rest=0
-                else:
-                    summ += income_price['count']*income_price['price']
-                    self.max_amortization[row][income_price['id']] = income_price['count']
-                    rest -= income_price['count']
-        price = round(summ / self.portions, 2)
+            self.product[row] = self.getProductPrice(row)
+            summ += self.product[row]
+        price = round(summ, 2)
+        print price
         return price
 
     def select_max_portions(self):
@@ -73,9 +77,7 @@ class productParent_Class(QtGui.QTreeWidgetItem):
         кол-во = минимум ( остаток продукта / массу в порции для продуктов в блюде )
         """
         try:
-            print self.consumption, self.parent.products
             lst = {self.parent.products[num] // self.consumption[num] for num in self.consumption}
-            print lst
             return min(lst)
         except:
             return None
@@ -88,7 +90,7 @@ class productParent_Class(QtGui.QTreeWidgetItem):
         query += "ORDER BY date"
         rows = db.exec_query(query)
         db.close_db()
-        return rows
+        return round(rows['rows'][0]['price'],2)
 
     #def getAvailableCount(self):
         #"""Определяет максимальное количество порций блюда, исходя из наличия продуктов на складе"""

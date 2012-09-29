@@ -30,12 +30,15 @@ class localDb_Class():
         keys = ()
         try:
             self.cursor.execute(query,rowId) if rowId else self.cursor.execute(query)
-            value = self.cursor.fetchall()
-            if self.cursor.description:
-                keys = [tuple[0] for tuple in self.cursor.description]
-            return {"rows":value,"keys":keys}
+            try:
+                value = self.cursor.fetchall()
+                if self.cursor.description:
+                    keys = [tuple[0] for tuple in self.cursor.description]
+                return {"rows":value,"keys":keys}
+            except:
+                return "OK"
         except sqlite3.Error as e:
-            raise Exception("Ошибка выполнения запроса:", e.args[0])
+            raise Exception(u"Ошибка выполнения запроса:", e.args[0])
 
 
     def create_all_tables(self):
@@ -55,13 +58,13 @@ class localDb_Class():
             print ("Ошибка выполнения запроса:", e.args[0])
 
 
-    def insert_val(self,table,data):
+    def insert_val(self,table,data, iid='NULL'):
         """
         Вставляет данные в таблицу
         """
         query = "INSERT INTO "
         query += table
-        query += " VALUES (NULL,"
+        query += " VALUES (%s," % iid
         query += ",".join("\"" + "%s" % val + "\"" for val in data)
         query += ", 1, datetime('now', 'localtime'))"
         self.exec_query(query)
@@ -143,11 +146,6 @@ class localDb_Class():
         for line in f.readlines():
             self.insert_val(line.strip(" \t\n").split(",")[0],line.strip(" \t\n").split(",")[1:])
 
-
-    def get_first_shift(self):
-        """Находит первую смену"""
-        return self.select_val_by_col('shift','shift','1')['rows'][0]
-
     def select_consumption(self,dishId):
         """Выбирает состав продукта"""
         query = "SELECT SUM(i.price*i.coefficient*c.brutto/1000) as price "
@@ -160,6 +158,6 @@ if __name__ == "__main__":
     db.open_db()
 
     db.create_all_tables()
-    db.export_from_file("../simple.data")
+    db.export_from_file("simple.data")
 
     db.close_db()

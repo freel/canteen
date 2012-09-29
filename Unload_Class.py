@@ -30,6 +30,7 @@ class Unload_Class(QtGui.QDialog):
         QtGui.QDialog.__init__(self, parent)
         self.ui = Ui_Unload()
         self.ui.setupUi(self)
+        self.shift = parent.shift
 
         #self.connect(self.ui.formButton, QtCore.SIGNAL("clicked()"),QtCore.SLOT("on_click_formButton()"))
         self.connect(self.ui.saveButton, QtCore.SIGNAL("clicked()"),QtCore.SLOT("on_click_saveButton()"))
@@ -69,7 +70,7 @@ class Unload_Class(QtGui.QDialog):
             #except:
                 #None
         db.close_db()
-        with open('export/base_'+self.shift.base+'.xml', 'w') as f:
+        with open('export/base_'+"%s" % self.shift.base+'.xml', 'w') as f:
             f.write(etree.tostring(root, pretty_print=True, encoding="UTF-8"))
 
     def import_base(self):

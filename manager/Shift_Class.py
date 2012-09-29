@@ -14,9 +14,10 @@ class Shift(QtGui.QWidget):
     time = datetime.now().strftime("%H:%M:%S")
     now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-    def __init__(self, parent):
+    def __init__(self, parent, base):
         QtGui.QWidget.__init__(self, parent)
         self.parent = parent
+        self.base = base
         self.renew()
 
 
@@ -28,7 +29,7 @@ class Shift(QtGui.QWidget):
 ## DATA ##
 
     def setupData(self):
-        db = localDb_Class()
+        #db = localDb_Class()
         #self.last = db.get_last_shift()
         """выдернуть время крайней смены и из сравнения с текущим временем, рассчитать какая смена и сколько пропущено смен"""
         self.meals = self.getTime()
@@ -36,7 +37,7 @@ class Shift(QtGui.QWidget):
         self.cashier = 1
         self.addShift() #Порядковый номер смены
         self.cashierlist = self.getCashierList() #Список кассиров
-        db.close_db()
+        #db.close_db()
 
     def getTime(self):
         """
@@ -54,8 +55,17 @@ class Shift(QtGui.QWidget):
     def currentShift(self,day,meals):
         """текущая смена, разница между первой сменой и текущей"""
         db = localDb_Class()
-        first_shift = db.get_first_shift()
+        query = "SELECT * FROM shift WHERE shift=1 AND base='%s'" % self.base
+        try:
+            first_shift = db.exec_query(query)['rows'][0]
+        except:
+            self.shift = 1
+            self.cashier = 1
+            db.insert_val('shift',(self.base,self.shift,self.today,self.meals,self.cashier))
+            first_shift = db.exec_query(query)['rows']
+            print first_shift
         db.close_db()
+        print datetime.strptime(first_shift['actual_date'].encode(),"%Y-%m-%d")
         daydiff = abs(datetime.strptime(day,"%Y-%m-%d") - datetime.strptime(first_shift['actual_date'].encode(),"%Y-%m-%d"))
         shiftdiff = daydiff.days*3 + (meals - first_shift['period'])
         return shiftdiff+1
@@ -63,8 +73,10 @@ class Shift(QtGui.QWidget):
     def addShift(self):
         """Выбираем из базы по номеру смены, если пусто, то записываем"""
         db = localDb_Class()
-        if not db.select_val_by_col('shift','shift',"%s" % self.shift)['rows']:
-            db.insert_val('shift',(self.shift,self.today,self.meals,self.cashier))
+        try:
+            db.select_val_by_col('shift','shift',"%s" % self.shift)['rows']
+        except:
+            db.insert_val('shift',(self.base,self.shift,self.today,self.meals,self.cashier))
         db.close_db()
         f = open("temp.data","w")
         f.write("%s" % self.shift)

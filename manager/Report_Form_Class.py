@@ -20,7 +20,7 @@ class Report_Form_Class():
         self.vals = vals
         self.parse_file(vals['type'])
         db = localDb_Class()
-        self.report_data = db.exec_query(self.report_param['query'])
+        self.report_data = db.exec_query(self.report_param['body_query'])
         db.close_db()
         self.form_report()
 
@@ -28,7 +28,8 @@ class Report_Form_Class():
         config = ConfigParser.ConfigParser()
         config.read('reports/' + filename)
         self.report_param = {
-            'query':config.get('data', 'query'),
+            'head_query':config.get('data', 'head_query'),
+            'body_query':config.get('data', 'body_query'),
             'head':config.get('data', 'head'),
             'body':config.get('data', 'body'),
             'floor':config.get('data', 'floor'),

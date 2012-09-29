@@ -47,7 +47,6 @@ class Dish_Class(QtGui.QDialog):
         self.ui.consumptionTableWidget.setCellWidget(self.ui.consumptionTableWidget.rowCount() - 1, 0, self.box[itemNumber])
 
     def checkProduct(self, row, cell, prow, pcell):
-        print "wahwah",prow, pcell
         if pcell==0:
             try:
                 db = localDb_Class()
@@ -57,44 +56,37 @@ class Dish_Class(QtGui.QDialog):
                     percent = db.exec_query(query)['rows'][0]['percent']
                 except:
                     percent = False
-                print self.ui.consumptionTableWidget.item(prow, 1).flags()
                 #print int(percent['rows'][0]['percent'])
                 #TODO ЧОЗАНАХ!?!???!
-                print prow in self.percent, "RRRR", percent
                 if (not prow in self.percent) and percent:
                     #Проценты есть, а переменной нет -- блокируем ячейку и создаем переменную
-                    print "+-"
                     item = self.ui.consumptionTableWidget.item(prow, 1)
                     item.setFlags(QtCore.Qt.NoItemFlags)
                     self.percent[prow] = percent
                     self.calc_brutto(prow)
                 elif (prow in self.percent) and percent:
-                    print "++"
                     #Проценты есть и переменная есть -- меняем переменную
                     self.percent[prow] = percent
                 elif (not percent) and (prow in self.percent):
-                    print "-+"
                     #Процентов нет, а переменная есть -- разблокируем ячейку и удаляем переменную
                     item = self.ui.consumptionTableWidget.item(prow, 1)
                     item.setFlags(QtCore.Qt.ItemIsEnabled|QtCore.Qt.ItemIsEditable|QtCore.Qt.ItemIsSelectable)
                     del self.percent[prow]
                 db.close_db()
-                print "end"
             except:
-                print "lolwut?"
+                None
         elif pcell==2:
             #TODO проверяем если есть % то высчитываем
             self.calc_brutto(prow)
 
     def calc_brutto(self, prow):
-        print int(self.ui.consumptionTableWidget.item(prow, 2).text())
         netto = int(self.ui.consumptionTableWidget.item(prow, 2).text())
         self.ui.consumptionTableWidget.item(prow, 1).setText("%s" % (100*netto/(100-self.percent[prow])))
         try:
             netto = int(self.ui.consumptionTableWidget.item(prow, 2).text())
             self.ui.consumptionTableWidget.item(prow, 1).setText("%s" % (100*netto/(100-self.percent[prow])))
         except:
-            print "nope"
+            None
 
     def getSections(self):
         """Берет список разделов Menu_Class дубль"""
@@ -130,7 +122,6 @@ class Dish_Class(QtGui.QDialog):
         vals = []
         #try:
         for row in range(self.ui.consumptionTableWidget.rowCount()):
-            print self.ui.consumptionTableWidget.item(row, 2).text()
             vals.append({
                 "name":self.ui.consumptionTableWidget.cellWidget(row, 0).currentText(),
                 "netto":self.ui.consumptionTableWidget.item(row, 2).text(),
@@ -142,6 +133,7 @@ class Dish_Class(QtGui.QDialog):
 
     def getDish(self):
         vals = {
+            "id":self.ui.idEdit.text(),
             "name":self.ui.nameEdit.text(),
             "section":self.ui.sectionBox.currentText(),
             "mass":self.ui.massEdit.text()
@@ -152,9 +144,8 @@ class Dish_Class(QtGui.QDialog):
         db = localDb_Class()
         #query = "INSERT INTO dish"
         #db.exec_query(query)
-        print "\'%s\'" % val["section"]
         section = db.select_val_by_col("section", "name", "\'%s\'" % val["section"])["rows"][0]["id"]
-        db.insert_val("dish", (val["name"], section, val["mass"]))
+        db.insert_val("dish", (val["name"], section, val["mass"]), iid=val["id"])
         db.close_db()
 
     def saveRow(self, vals, dish):
@@ -162,7 +153,6 @@ class Dish_Class(QtGui.QDialog):
         #query = "INSERT INTO "
         #db.exec_query(query)
         dish = db.select_val_by_col("dish", "name", "\'%s\'" % dish["name"])["rows"][0]["id"]
-        print vals
         for val in vals:
             product = db.select_val_by_col("product", "name", "\'%s\'" % val["name"])["rows"][0]["id"]
             db.insert_val("consumption", (dish, product, val["brutto"], val["netto"]))

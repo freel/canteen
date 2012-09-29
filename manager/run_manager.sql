@@ -14,13 +14,14 @@
             CREATE TABLE IF NOT EXISTS shift (
                 id	            INTEGER PRIMARY KEY AUTOINCREMENT,
                 base            REFERENCES base(id),
-                shift           INTEGER UNIQUE,
+                shift           INTEGER,
                 actual_date     TIMESTAMP,
                 period          INT,
                 cashier 	    REFERENCES cashier(id),
                 active          BOOLEAN,
                 date	        TIMESTAMP
                 );
+            CREATE UNIQUE INDEX baseshift ON shift (base, shift);
             CREATE TABLE IF NOT EXISTS measure (
                 id      	    INTEGER PRIMARY KEY AUTOINCREMENT,
                 code            INTEGER UNIQUE,
@@ -45,7 +46,7 @@
             CREATE TABLE IF NOT EXISTS dish (
                 id  	        INTEGER PRIMARY KEY AUTOINCREMENT,
                 name   	        TEXT UNIQUE,
-                section         REFERENCES section(id),
+                section        sREFERENCES section(id),
                 mass            FLOAT,
                 active          BOOLEAN,
                 date            TIMESTAMP
@@ -77,7 +78,7 @@
                 );
             CREATE TABLE IF NOT EXISTS income (
                 id      	    INTEGER PRIMARY KEY AUTOINCREMENT,
-                base            REFERENCES base(id),
+                base,
                 name	        TEXT UNIQUE,
                 nomenculature   INTEGER UNIQUE,
                 product         REFERENCES product(id),
@@ -88,30 +89,34 @@
                 supplier        REFERENCES supplier(id) DEFAULT 1,
                 price           FLOAT,
                 coefficient     FLOAT,
-                shift           REFERENCES shift(shift),
+                shift,
                 active          BOOLEAN,
-                date            TIMESTAMP
+                date            TIMESTAMP,
+                FOREIGN KEY(base, shift) REFERENCES shift(base,shift)
                 );
             CREATE TABLE IF NOT EXISTS calculate (
                 id          	INTEGER PRIMARY KEY AUTOINCREMENT,
-                base            REFERENCES base(id),
+                base,
                 income          REFERENCES income(id),
                 product         REFERENCES product(id),
                 dish            REFERENCES dish(id),
                 price           FLOAT,
+                shift,
                 active          BOOLEAN,
-                date            TIMESTAMP
+                date            TIMESTAMP,
+                FOREIGN KEY(base, shift) REFERENCES shift(base,shift)
                 );
             CREATE TABLE IF NOT EXISTS menu (
                 id  	        INTEGER PRIMARY KEY AUTOINCREMENT,
-                base            REFERENCES base(id),
+                base,
                 dish            REFERENCES dish(id),
-                shift           REFERENCES shift(shift),
+                shift,
                 portions        INT,
                 balance		    INT,
                 price	        FLOAT,
                 active          BOOLEAN,
-                date		    TIMESTAMP
+                date		    TIMESTAMP,
+                FOREIGN KEY(base, shift) REFERENCES shift(base,shift)
                 );
             CREATE TABLE IF NOT EXISTS company (
                 id              INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -131,12 +136,13 @@
                 );
             CREATE TABLE IF NOT EXISTS sale (
                 id	            INTEGER PRIMARY KEY AUTOINCREMENT,
-                base            REFERENCES base(id),
+                base,
                 menu            REFERENCES menu(id),
-                shift           REFERENCES shift(shift),
+                shift,
                 worker  	    REFERENCES worker(id),
                 number	        INTEGER,
                 active          BOOLEAN,
-                date    	    TIMESTAMP
+                date    	    TIMESTAMP,
+                FOREIGN KEY(base, shift) REFERENCES shift(base,shift)
                 );
             COMMIT;

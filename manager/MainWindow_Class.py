@@ -17,13 +17,13 @@ class MainWindow_Class(QtGui.QMainWindow):
     """Создание главного окна приложения"""
 
 
-    def __init__(self, parent):
+    def __init__(self, parent, base):
         QtGui.QMainWindow.__init__(self, parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.showFullScreen()
 
-        self.shift = Shift(self)
+        self.shift = Shift(self, base)
         self.shift.show()
 
         self.sales = SalesTable_Class(self)
@@ -44,17 +44,17 @@ class MainWindow_Class(QtGui.QMainWindow):
         #form = Shift_Class(self)
         #form.show()
 
-    def on_click_openSalesButton(self):
-        """Открывает окно продаж"""
-        try:
-            tab = self.ui.tabWidget.indexOf(self.formSales)
-            self.formSales.renew()
-        except:
-            self.formSales = Sales_Class(self)
-            tab = self.ui.tabWidget.addTab(self.formSales, u"Продажи")
-        self.ui.tabWidget.setCurrentIndex(tab)
-        self.sales.setEnabled(True)
-        self.sales.ui.cardEdit.setFocus()
+    #def on_click_openSalesButton(self):
+        #"""Открывает окно продаж"""
+        #try:
+            #tab = self.ui.tabWidget.indexOf(self.formSales)
+            #self.formSales.renew()
+        #except:
+            #self.formSales = Sales_Class(self)
+            #tab = self.ui.tabWidget.addTab(self.formSales, u"Продажи")
+        #self.ui.tabWidget.setCurrentIndex(tab)
+        #self.sales.setEnabled(True)
+        #self.sales.ui.cardEdit.setFocus()
 
     def on_click_openMenuButton(self):
         """Открывает создание меню"""

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <author>Kurlyuk Pavel</author>
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="windowModality">
+   <enum>Qt::WindowModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1056</width>
+    <height>613</height>
+   </rect>
+  </property>
+  <property name="focusPolicy">
+   <enum>Qt::TabFocus</enum>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout"/>
+    </item>
+    <item row="1" column="1">
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="tabPosition">
+       <enum>QTabWidget::South</enum>
+      </property>
+      <property name="elideMode">
+       <enum>Qt::ElideNone</enum>
+      </property>
+      <property name="documentMode">
+       <bool>false</bool>
+      </property>
+      <property name="tabsClosable">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>2</width>
+      <height>2</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_2"/>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QDockWidget" name="dockWidget_3">
+   <property name="minimumSize">
+    <size>
+     <width>1056</width>
+     <height>60</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>524287</width>
+     <height>60</height>
+    </size>
+   </property>
+   <property name="contextMenuPolicy">
+    <enum>Qt::DefaultContextMenu</enum>
+   </property>
+   <property name="floating">
+    <bool>false</bool>
+   </property>
+   <property name="features">
+    <set>QDockWidget::NoDockWidgetFeatures</set>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::BottomDockWidgetArea</set>
+   </property>
+   <property name="windowTitle">
+    <string/>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>8</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_3">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <property name="margin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QCommandLinkButton" name="openSalesButton">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="text">
+        <string>Продажи [F1]</string>
+       </property>
+       <property name="shortcut">
+        <string>F1</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCommandLinkButton" name="openMenuButton">
+       <property name="text">
+        <string>Меню [F2]</string>
+       </property>
+       <property name="shortcut">
+        <string>F2</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCommandLinkButton" name="openStorageButton">
+       <property name="text">
+        <string>Склад [F3]</string>
+       </property>
+       <property name="shortcut">
+        <string>F3</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCommandLinkButton" name="openDirectoryButton">
+       <property name="text">
+        <string>Справочники [F4]</string>
+       </property>
+       <property name="shortcut">
+        <string>F4</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCommandLinkButton" name="openReportButton">
+       <property name="text">
+        <string>Отчеты [F5]</string>
+       </property>
+       <property name="shortcut">
+        <string>F5</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCommandLinkButton" name="openUnloadButton">
+       <property name="text">
+        <string>Выгрузка [F6]</string>
+       </property>
+       <property name="shortcut">
+        <string>F6</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>openUnloadButton</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

@@ -192,8 +192,7 @@ class Menu_Class(QtGui.QWidget):
         self.widgetCount.item = item
         self.widgetCount.ui.spinBox.setMinimum(0)
         self.widgetCount.ui.spinBox.setMaximum(self.widgetCount.item.portions)
-        
-        ## Далее перенаправляет обработку к родителю, т.е. в Menu_Class(). Ну совсем глупо бядабяда.
+
         self.connect(self.widgetCount.ui.submitButton, QtCore.SIGNAL("clicked()"), QtCore.SLOT("onSubmitCount()"))
         self.connect(self.widgetCount.ui.closeButton, QtCore.SIGNAL("clicked()"), QtCore.SLOT("onCloseCount()"))
         self.widgetCount.show()

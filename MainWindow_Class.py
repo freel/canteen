@@ -60,7 +60,7 @@ class MainWindow_Class(QtGui.QMainWindow):
         """Открывает создание меню"""
         try:
             tab = self.ui.tabWidget.indexOf(self.formMenu)
-            self.formMenu.renew()
+            #~ self.formMenu.renew()
         except:
             self.formMenu = Menu_Class(self)
             tab = self.ui.tabWidget.addTab(self.formMenu, u"Меню")

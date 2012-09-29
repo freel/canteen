@@ -1,0 +1,56 @@
+[data]
+head: <body>Калькуляционная карточка № {start}<br>
+    Наименование блюд {finish}<br>
+    <table border="1">
+        <tr>
+            <td rowspan="4">Код продукта</td>
+            <td>Порядковый номер калькуляции</td>
+            <td colspan="4">№1</td>
+            <td colspan="4">№2</td>
+            <td colspan="4">№3</td>
+            <td colspan="4">№4</td>
+            <td colspan="4">№5</td>
+        </tr>
+        <tr>
+            <td>и дата её утверждения</td>
+            <td colspan="4">date</td>
+            <td colspan="4">date</td>
+            <td colspan="4">date</td>
+            <td colspan="4">date</td>
+            <td colspan="4">date</td>
+        </tr>
+        <tr>
+            <td rowspan="2">Наименование продукта</td>
+            <td colspan="2">норма</td>
+            <td rowspan="2">цена</td>
+            <td rowspan="2">сумма</td>
+            <td colspan="2">норма</td>
+            <td rowspan="2">цена</td>
+            <td rowspan="2">сумма</td>
+            <td colspan="2">норма</td>
+            <td rowspan="2">цена</td>
+            <td rowspan="2">сумма</td>
+            <td colspan="2">норма</td>
+            <td rowspan="2">цена</td>
+            <td rowspan="2">сумма</td>
+            <td colspan="2">норма</td>
+            <td rowspan="2">цена</td>
+            <td rowspan="2">сумма</td>
+        </tr>
+        <tr>
+            <td>и дата её утверждения</td>
+            <td>брут.</td>
+            <td>нет.</td>
+            <td>брут.</td>
+            <td>нет.</td>
+            <td>брут.</td>
+            <td>нет.</td>
+            <td>брут.</td>
+            <td>нет.</td>
+            <td>брут.</td>
+            <td>нет.</td>
+        </tr>
+body: nbgf {name}, {mass}<br>
+floor: </table></body>
+head_query: SELECT name, id FROM dish
+body_query: SELECT i.nomenculature, p.name, c.brutto, c.netto, i.price FROM dish
